@@ -136,6 +136,7 @@ class KNearestNeighbor(object):
         # print(self.X_train.shape)
         # print(X.shape)
         # print(self.X_train - X)
+
         dists = np.sqrt((X ** 2).sum(axis=1, keepdims=1) - 2 * X.dot(self.X_train.T)
               + (self.X_train ** 2).sum(axis=1))
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -186,12 +187,7 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            values = Counter(closest_y)
-            # print (values)
-            count = values.most_common()
-            # print(count)
-            y_pred[i] = count[0][0]
-
+            y_pred[i] = Counter(closest_y).most_common()[0][0]
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         # print(closest_y)
         # print(dists[0])
